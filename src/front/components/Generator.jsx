@@ -6,6 +6,7 @@ const Generator = ({ foods, setRecipes }) => {
     const [currentRecipe, setCurrentRecipe] = useState(null);
     const [allRecipeOptions, setAllRecipeOptions] = useState([]);
     const [customConditions, setCustomConditions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     // Cargar condiciones personalizadas de localStorage
     useEffect(() => {
@@ -16,6 +17,8 @@ const Generator = ({ foods, setRecipes }) => {
     const generateRecipes = async () => {
         const ingredients = foods.map(food => food.label);
         const customization = customConditions.join(', ');
+
+        setIsLoading(true); // Activar estado de carga
 
         try {
             const response = await fetch(`${backendUrl}/api/generate-recipe`, {
@@ -54,6 +57,9 @@ const Generator = ({ foods, setRecipes }) => {
             console.log('Recetas generadas:', data);
         } catch (error) {
             console.error("Error", error);
+            alert('Error de conexión: No se pudo generar la receta');
+        } finally {
+            setIsLoading(false); // Desactivar estado de carga siempre al finalizar
         }
     };
 
@@ -99,8 +105,22 @@ const Generator = ({ foods, setRecipes }) => {
             )}
 
             <div className="d-flex gap-2">
-                <button className='btn btn-success mt-3' onClick={generateRecipes}>
-                    Generar Recetas
+                <button
+                    className='btn btn-success mt-3'
+                    onClick={generateRecipes}
+                    disabled={isLoading}
+                >
+                    {isLoading ? (
+                        <>
+                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Generando recetas...
+                        </>
+                    ) : (
+                        <>
+                            <span className="me-2">✨🤖✨</span>
+                            Generar Recetas
+                        </>
+                    )}
                     {customConditions.length > 0}
                 </button>
                 {currentRecipe && (

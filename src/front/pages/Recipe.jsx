@@ -44,7 +44,7 @@ function Recipe() {
 
 
     return (
-        <div>
+        <div className='m-2'>
             <div className="p-5 mb-4 bg-success-subtle rounded-3">
                 <div className="container-fluid py-5 d-flex flex-column align-items-center text-center">
                     <h1 className="display-5 fw-bold">Comienza a explorar recetas!</h1>
@@ -70,20 +70,20 @@ function Recipe() {
                 <div className="row">
                     <div className='col-md-6 col-sm-12 border-end border-success border-3 px-3'>
                         {/* Ingredients */}
-                        <h2 className='text-success'>Ingredients</h2>
+                        <h2 className='text-success'>Ingredientes</h2>
                         <ul className="list-group list-group-flush text-start">
                             {(recipes ? recipes.ingredientes : exampleRecipe.ingredientes) && (recipes ? recipes.ingredientes : exampleRecipe.ingredientes).map((ing, index) => (
                                 <li key={index} className="list-group-item border-success">{ing}</li>
                             ))}
                         </ul>
-                        <h2 className='text-success mt-3 text-start'>Difficulty</h2>
+                        <h2 className='text-success mt-3 text-start'>Dificultad</h2>
                         <p className='text-start text-success'>{"★".repeat(recipes ? recipes.dificultad : exampleRecipe.dificultad) + "☆".repeat(5 - (recipes ? recipes.dificultad : exampleRecipe.dificultad))}</p>
-                        <h2 className='text-success mt-3 text-start'>Prep time</h2>
+                        <h2 className='text-success mt-3 text-start'>Tiempo estimado</h2>
                         <p className='text-start'>{recipes ? recipes.tiempo_estimado : exampleRecipe.tiempo_estimado}</p>
                     </div>
                     <div className='col-md-6 col-sm-12 px-3'>
                         {/* Recipe */}
-                        <h2 className='text-success'>Instructions:</h2>
+                        <h2 className='text-success'>Instrucciones:</h2>
                         <div className='text-start'>
                             <ol className="list-group list-group-numbered">
                                 {(recipes ? recipes.preparacion : exampleRecipe.preparacion) && (recipes ? recipes.preparacion : exampleRecipe.preparacion).map((step, index) => (

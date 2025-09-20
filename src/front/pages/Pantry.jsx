@@ -142,17 +142,9 @@ function Pantry() {
   return (
     <>
       {/* Jumbotron */}
-      <div className="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div className="p-5 mb-4 bg-success-subtle rounded-3">
         <div className="container-fluid py-5 d-flex flex-column align-items-center text-center">
           <h1 className="display-5 fw-bold">¡Bienvenido {store.user.name} a Mi Despensa!</h1>
-          <div className="container my-5">
-            <img
-              src={pantryImg}
-              alt="jumbotron-imagen"
-              className="img-fluid rounded w-100"
-              style={{ objectFit: 'cover', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: -1 }}
-            />
-          </div>
           <p className="col-md-8 fs-4">
             Ingresa los alimentos que tengas en tu despensa y recibe recetas adaptadas a ti
           </p>
@@ -162,7 +154,7 @@ function Pantry() {
               <strong>Personaliza tu experiencia:</strong>
             </label>
             <input
-              className="form-control bg-success-subtle"
+              className="form-control bg-dark-subtle"
               type="text"
               name="customPrompt"
               value={customPrompt}

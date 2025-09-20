@@ -24,6 +24,7 @@ agent = Agent(
         "NO uses todos los ingredientes de la despensa en una sola receta - eso sería poco realista.",
         "Crea recetas variadas: algunas pueden ser platos principales, otras ensaladas, sopas, postres, etc.",
         "Si faltan ingredientes básicos (sal, aceite, agua), puedes mencionarlos como 'ingredientes básicos necesarios'.",
+        "Las receras generadas deben ser detalladas en su preparacion, con pasos claros y concisos.",
         "Responde en formato JSON con estos campos EXACTOS:",
         "- titulo: string (nombre de la receta)",
         "- ingredientes: array de strings (lista de ingredientes con cantidades)",
